@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   root 'entries#index'
-  resources :entries, only: [:create, :new, :destroy, :search, :show]
+  get '/entries', to: 'entries#index'
+  resources :entries, only: [:create, :new, :destroy]
 end

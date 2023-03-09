@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
     def index
         if params[:search]
-            search
+            @entries = Entry.where("name LIKE ?", "%#{params[:search]}%")
         else
             @entries = Entry.all
         end
@@ -25,16 +25,6 @@ class EntriesController < ApplicationController
         redirect_to root_url
     end
 
-    def search
-        if @entry = Entry.all.find{|entry| entry.name.include? (params[:search])}
-          redirect_to entry_path(@entry)
-        end
-    end
-
-    def show
-        @entry = Entry.find(params[:id])
-    end
- 
     private
  
     def entry_params
