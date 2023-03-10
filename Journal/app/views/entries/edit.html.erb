@@ -1,0 +1,29 @@
+<style>
+h1 {text-align: center;}
+p {text-align: left;}
+div {text-align: center;}
+</style>
+<h1>Edit Entry</h1>
+
+<%= form_for @entry do |form| %>
+  <div>
+    <%= form.label :name, 'Name:', :html => {:class => 'text-left'} %>
+    <div>
+      <%= form.text_field :name, :size => 25 %>
+    </div>
+  </div>
+  <div>
+    <%= form.label :name, 'Link:' %>
+    <div>
+      <%= form.text_field :link, :size => 25 %>
+    </div>
+  </div>
+<br>
+<div>
+  <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+    Update Entry
+  <% end %>
+  <%= link_to "Back to home", root_path, {class:"btn btn-danger"} %>
+</div>
+
+<% end %>

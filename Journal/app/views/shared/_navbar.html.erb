@@ -7,8 +7,10 @@
 
   <div class="navbar-header">
     <%= form_tag entries_path, method: :get do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search" %>
+    <%= text_field_tag :search, params[:search], placeholder:"Search..." %>
+    <%= button_tag(type: 'submit') do %>
+      <i class="fa fa-search" aria-hidden="true"></i>
+    <% end %>
     <% end %>
   </div>
 
