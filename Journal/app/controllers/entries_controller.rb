@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
     def index
         if params[:search]
-            @entries = Entry.where("name LIKE ?", "%#{params[:search]}%")
+            @entries = Entry.where("name ILIKE ?", "%#{params[:search]}%")
         else
             @entries = Entry.all
         end
