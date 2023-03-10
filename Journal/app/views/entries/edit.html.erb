@@ -4,9 +4,24 @@ h1 {text-align: center;}
 p {text-align: left;}
 div {text-align: center;}
 </style>
+
 <br>
 <h1>Edit Entry</h1>
 <br>
+
+<%= form_with(model: @entry, url: entries_path) do |form| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+
 <%= form_for @entry do |form| %>
   <div>
     <%= form.label :name, 'Name:', :html => {:class => 'text-left'} %>

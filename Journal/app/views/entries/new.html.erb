@@ -9,15 +9,27 @@ div {text-align: center;}
 
 <br>
 
+<%= form_with(model: @entry, url: entries_path) do |form| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
 <%= form_with(model: @entry) do |form| %>
   <div>
-      <%= form.label :name, 'Name:', :html => {:class => 'text-left'} %>
+      <%= form.label :name, 'Name:' %>
       <div>
         <%= form.text_field :name, :size => 25 %>
       </div>
     </div>
   <div>
-      <%= form.label :name, 'Link:' %>
+      <%= form.label :link, 'Link:' %>
       <div>
         <%= form.text_field :link, :size => 25 %>
       </div>
@@ -32,4 +44,4 @@ div {text-align: center;}
     <%= link_to "Back to home", root_path, {class:"btn btn-danger"} %>
   </div>
 
-  <% end %>
+<% end %>

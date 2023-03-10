@@ -13,7 +13,8 @@ class EntriesController < ApplicationController
  
     def create
         @entry = Entry.new(entry_params)
-        if @entry.save
+        if @entry.valid?
+            @entry.save
             redirect_to root_url
         else
             render :new
