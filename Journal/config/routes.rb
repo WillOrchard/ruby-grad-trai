@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static/index'
   root 'entries#index'
   get '/entries', to: 'entries#index'
   get '/entries/:id/edit', to: 'entries#edit', as: 'edit_entry'
