@@ -40,10 +40,34 @@ class EntriesController < ApplicationController
         end
     end
 
+    def coding_resources
+        @entries = Entry.where(category: "Coding Resource")
+        render 'CodingResources'
+      end
+
+    def solirius_resources
+        @entries = Entry.where(category: "Solirius Resource")
+        render 'SoliriusResources'
+    end
+
+    def useful_websites
+        @entries = Entry.where(category: "Useful Website")
+        render 'UsefulWebsites'
+    end
+
+    def other
+        @entries = Entry.where(category: "Other")
+        render 'Other'
+    end
+
+    def show_category
+        @entries = Entry.where(category: params[:category])
+    end
+
     private
  
     def entry_params
-        params.require(:entry).permit(:name, :link)
+        params.require(:entry).permit(:name, :link, :category)
     end
  
 end

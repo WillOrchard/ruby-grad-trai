@@ -30,12 +30,18 @@ div {text-align: center;}
     </div>
   <div>
   <br>
+  <div>
       <%= form.label :link, 'Link:' %>
       <div>
         <%= form.text_field :link, :size => 25 %>
       </div>
   </div>
-
+  <br>
+  <br>
+  <div>
+    <%= form.label :category, 'Category:' %>
+    <%= form.select :category, ['Solirius Resource', 'Useful Website', 'Coding Resource', 'Other'], {} %>
+  </div>
   <br>
   <br>
   <div>
