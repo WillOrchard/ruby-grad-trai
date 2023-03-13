@@ -2,16 +2,17 @@ require "application_system_test_case"
 
 class EntriesTest < ApplicationSystemTestCase
     test "delete an existing entry" do
-        # Visit the home page
-        visit entries_url
+        visit new_entry_url
     
-        # Find the first entry and click the delete link
-        entry = page.first(".entry")
-        accept_confirm do
-          entry.click_link "Delete"
-        end
+        fill_in "Name", with: "New Journal Entry"
+        fill_in "Link", with: "This is a new journal entry link"
+        first('#select_id option', minimum: 1).select_option
+        click_on "Create Entry"
+
+        visit solirius_resources_path
     
-        # Verify that the entry has been removed from the page
-        assert_no_selector ".entry", text: entry.text
+        find(:button, "Delete", match: :first).click
+    
+        assert_no_text("New Journal Entry".downcase)
       end
     end

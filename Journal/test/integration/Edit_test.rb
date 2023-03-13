@@ -2,19 +2,25 @@ require "application_system_test_case"
 
 class EntriesTest < ApplicationSystemTestCase
     test "edit an existing entry" do
-        # Visit the home page
-        visit entries_url
+
+        visit new_entry_url
     
-        # Find the first entry and click the edit link
-        entry = page.first(".entry")
-        entry.click_link "Edit"
+        fill_in "Name", with: "New Journal Entry"
+        fill_in "Link", with: "This is a new journal entry link"
+        first('#select_id option', minimum: 1).select_option
+        click_on "Create Entry"
+
+        visit solirius_resources_path
     
-        # Fill in the form with new data and submit it
+        edit_button = page.first('a.btn.btn-outline-black', text: 'EDIT')
+        edit_button.click
+
         fill_in "Name", with: "Updated Journal Entry"
         fill_in "Link", with: "This is an updated journal entry link"
+        first('#select_id option', minimum: 1).select_option
         click_on "Update Entry"
-    
-        # Verify that the updated entry is displayed on the home page
-        assert_text "Updated Journal Entry"
+        visit solirius_resources_path
+
+        assert_text("Updated Journal Entry".downcase)
       end
     end

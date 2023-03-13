@@ -36,8 +36,14 @@ div {text-align: center;}
       <%= form.text_field :link, :size => 25 %>
     </div>
   </div>
-<br>
-<br>
+  <br>
+  <br>
+  <div>
+    <%= form.label :category, 'Category:' %>
+    <%= form.select :category, ['Solirius Resource', 'Useful Website', 'Coding Resource'], {}, :id => "select_id" %>
+  </div>
+  <br>
+  <br>
 <div>
   <%= button_tag(type: 'submit', class: "btn btn-success") do %>
     Update Entry

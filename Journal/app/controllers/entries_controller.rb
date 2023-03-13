@@ -1,10 +1,6 @@
 class EntriesController < ApplicationController
     def index
-        if params[:search]
-            @entries = Entry.where("name ILIKE ?", "%#{params[:search]}%")
-        else
-            @entries = Entry.all
-        end
+        @entries = Entry.all
     end
  
     def new
@@ -23,7 +19,7 @@ class EntriesController < ApplicationController
 
     def destroy
         Entry.find(params[:id]).destroy
-        redirect_to root_url
+        redirect_back(fallback_location: root_path)
     end
 
     def edit
@@ -55,11 +51,6 @@ class EntriesController < ApplicationController
         render 'UsefulWebsites'
     end
 
-    def other
-        @entries = Entry.where(category: "Other")
-        render 'Other'
-    end
-
     def show_category
         @entries = Entry.where(category: params[:category])
     end
@@ -67,7 +58,7 @@ class EntriesController < ApplicationController
     private
  
     def entry_params
-        params.require(:entry).permit(:name, :link, :category)
+        params.require(:entry).permit(:name, :link, :category, :search)
     end
  
 end
