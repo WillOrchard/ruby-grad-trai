@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "styles.css" %>
+<style>
+h1 {text-align: center;}
+p {text-align: left;}
+div {text-align: center;}
+</style>
+
+<br>
+<h1>Login</h1>
+<br>
+
+<%= form_tag login_path do %>
+  <div>
+    <%= label_tag :username, 'Username:' %>
+    <div>
+      <%= text_field_tag :username %>
+    </div>
+  </div>
+  <br>
+  <div>
+    <%= label_tag :password, 'Password:' %>
+    <div>
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+  <br>
+  <div>
+    <%= submit_tag "Log In", class: "btn btn-outline-dark" %>
+  </div>
+<% end %>
