@@ -13,18 +13,22 @@ div {text-align: center;}
   <div>
     <%= label_tag :username, 'Username:' %>
     <div>
-      <%= text_field_tag :username %>
+      <%= text_field_tag :username, nil, name: 'username' %>
     </div>
   </div>
   <br>
   <div>
     <%= label_tag :password, 'Password:' %>
     <div>
-      <%= password_field_tag :password %>
+      <%= password_field_tag :password, nil, name: 'password' %>
     </div>
   </div>
   <br>
   <div>
-    <%= submit_tag "Log In", class: "btn btn-outline-dark" %>
+    <%= submit_tag "Log In", class: "btn btn-outline-dark", name: 'submit' %>
   </div>
+  <br>
+  <% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+  <% end %>
 <% end %>
